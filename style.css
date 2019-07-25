@@ -1,0 +1,61 @@
+
+
+.el1 {
+    height: 50vh;
+    background: conic-gradient(red, magenta, blue, cyan, lime, yellow, red);
+  }
+  @supports (background: paint(id, foo)) {
+    el1.is-loaded {
+      background: paint(conic-gradient, red magenta blue cyan lime yellow red);
+    }
+  }
+
+  var gradient = new ConicGradient({
+    stops: "red, magenta, blue, cyan, lime, yellow, red"
+  });
+
+  if (!CSS.supports('background', 'paint(id, foo)')) {
+    el.style.background = 'url(' + gradient.dataURL + ')'
+  }
+
+
+  .el2 {
+      height: 20vh;
+    background: linear-gradient(to bottom right, deeppink, transparent 50%, orangered),
+               linear-gradient(to top right, yellow, transparent 50%, cyan) #888;
+  }
+  .el2.is-loaded {
+    background: paint(corners-gradient, deeppink, cyan, orangered, yellow);
+  }
+
+  h1 {
+    font-size: 20px;
+}
+
+input {
+    outline: 0;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+label:last-child {
+    margin-bottom: 0;
+}
+
+.web-checkbox {
+    --checkbox-color: #e8e8e8;
+
+    margin: 0;
+    width: var(--checkbox-size, 20px);
+    height: var(--checkbox-size, 20px);
+    -webkit-appearance: none;
+    background-image: paint(checkbox);
+}
+
+.web-checkbox:checked {
+    --checkbox-status: true;
+    --checkbox-color: #2ab1e8;
+}
